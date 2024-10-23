@@ -6,6 +6,8 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Icon
@@ -25,6 +27,10 @@ import com.plcoding.cryptotracker.crypto.domain.Coin
 import com.plcoding.cryptotracker.presentation.models.CoinUi
 import com.plcoding.cryptotracker.presentation.models.toCoinUi
 import com.plcoding.cryptotracker.ui.theme.CryptoTrackerTheme
+
+/**
+ * This composable defines the UI of CoinListItem i.e. each coin card
+ */
 
 @Composable
 fun CoinListItem(
@@ -56,27 +62,28 @@ fun CoinListItem(
         ) {
             Text(
                 text = coinUi.symbol,
-                fontSize =  20.sp,
+                fontSize = 20.sp,
                 fontWeight = FontWeight.Bold,
                 color = contentColor
             )
             Text(
                 text = coinUi.name,
-                fontSize =  14.sp,
+                fontSize = 14.sp,
                 fontWeight = FontWeight.Light,
                 color = contentColor
             )
         }
-        Column (
+        Column(
             horizontalAlignment = Alignment.End
-        ){
+        ) {
             Text(
                 text = "$ ${coinUi.priceUsd.formatted}",
-                fontSize =  16.sp,
+                fontSize = 16.sp,
                 fontWeight = FontWeight.SemiBold,
                 color = contentColor
             )
-
+            Spacer(modifier = Modifier.height(8.dp))
+            PriceChange(change = coinUi.changePercent24Hr)
         }
     }
 }
@@ -88,7 +95,7 @@ private fun CoinListItemPreview() {
         CoinListItem(
             coinUi = previewCoin,
             onClick = {/*TODO()*/ },
-            modifier = Modifier.background(MaterialTheme.colorScheme.primaryContainer)
+            modifier = Modifier.background(MaterialTheme.colorScheme.background)
         )
     }
 }
@@ -100,5 +107,5 @@ internal val previewCoin = Coin(
     symbol = "BTC",
     marketCapUsd = 1255633545.75,
     priceUsd = 25135.54,
-    changePercent24Hr = 0.1
+    changePercent24Hr = -0.1
 ).toCoinUi()
