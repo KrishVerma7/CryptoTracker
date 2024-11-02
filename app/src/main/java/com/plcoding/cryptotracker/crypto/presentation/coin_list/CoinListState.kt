@@ -1,7 +1,7 @@
-package com.plcoding.cryptotracker.presentation.coin_list
+package com.plcoding.cryptotracker.crypto.presentation.coin_list
 
 import androidx.compose.runtime.Immutable
-import com.plcoding.cryptotracker.presentation.models.CoinUi
+import com.plcoding.cryptotracker.crypto.presentation.models.CoinUi
 
 @Immutable
 data class CoinListState(
