@@ -1,4 +1,4 @@
-package com.plcoding.cryptotracker.presentation.coin_list.components
+package com.plcoding.cryptotracker.crypto.presentation.coin_list.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -24,8 +24,8 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.plcoding.cryptotracker.crypto.domain.Coin
-import com.plcoding.cryptotracker.presentation.models.CoinUi
-import com.plcoding.cryptotracker.presentation.models.toCoinUi
+import com.plcoding.cryptotracker.crypto.presentation.models.CoinUi
+import com.plcoding.cryptotracker.crypto.presentation.models.toCoinUi
 import com.plcoding.cryptotracker.ui.theme.CryptoTrackerTheme
 
 /**
