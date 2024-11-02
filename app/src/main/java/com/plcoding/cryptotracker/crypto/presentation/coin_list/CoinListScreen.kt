@@ -1,4 +1,4 @@
-package com.plcoding.cryptotracker.presentation.coin_list.components
+package com.plcoding.cryptotracker.crypto.presentation.coin_list
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -15,7 +15,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
-import com.plcoding.cryptotracker.presentation.coin_list.CoinListState
+import com.plcoding.cryptotracker.crypto.presentation.coin_list.components.CoinListItem
+import com.plcoding.cryptotracker.crypto.presentation.coin_list.components.previewCoin
 import com.plcoding.cryptotracker.ui.theme.CryptoTrackerTheme
 
 @Composable
@@ -23,20 +24,24 @@ fun CoinListScreen(
     state: CoinListState,
     modifier: Modifier = Modifier
 ) {
-    if (state.isLoading) {
+    if(state.isLoading) {
         Box(
-            modifier = Modifier.fillMaxSize(),
+            modifier = modifier
+                .fillMaxSize(),
             contentAlignment = Alignment.Center
-        ) { CircularProgressIndicator() }
+        ) {
+            CircularProgressIndicator()
+        }
     } else {
         LazyColumn(
-            modifier = Modifier.fillMaxSize(),
+            modifier = modifier
+                .fillMaxSize(),
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            items(state.coins){coinUi->
+            items(state.coins) { coinUi ->
                 CoinListItem(
                     coinUi = coinUi,
-                    onClick = {/*TODO()*/},
+                    onClick = { /*TODO*/ },
                     modifier = Modifier.fillMaxWidth()
                 )
                 HorizontalDivider()
@@ -47,15 +52,16 @@ fun CoinListScreen(
 
 @PreviewLightDark
 @Composable
-private fun CoinListScreenPreview (modifier: Modifier = Modifier) {
+private fun CoinListScreenPreview() {
     CryptoTrackerTheme {
         CoinListScreen(
             state = CoinListState(
-                coins = (1..100).map{
+                coins = (1..100).map {
                     previewCoin.copy(id = it.toString())
                 }
             ),
-            modifier = Modifier.background(MaterialTheme.colorScheme.background)
+            modifier = Modifier
+                .background(MaterialTheme.colorScheme.background)
         )
     }
 }
